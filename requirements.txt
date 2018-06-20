@@ -1,0 +1,6 @@
+google-api-python-client==1.7.3
+click==6.7
+adal==1.0.1
+pyperclip==1.6.2
+requests==2.19.0
+oauth2client
