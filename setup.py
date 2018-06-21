@@ -26,7 +26,7 @@ setup(
     name="connectors-utility-cli",
     version='0.0.0',
     description="A combination different connectors acting as proxies to data sources",
-    long_description="\n\n".join([open("README.rst").read()]),
+    long_description="\n\n".join([open("README.md").read()]),
     license='MIT',
     author="Hong Nguyen",
     author_email="hpnguyen@linkedin.com",
@@ -34,7 +34,9 @@ setup(
     packages=find_packages(),
     install_requires=requires,
     entry_points={'console_scripts': [
-        'connect = connectors_utility.cli:main']},
+        'connect = connectors_utility.cli:main',
+        'msgraph = connectors_utility.msgraph.cli:main'
+        ]},
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
