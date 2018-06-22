@@ -35,8 +35,9 @@ setup(
     install_requires=requires,
     entry_points={'console_scripts': [
         'connect = connectors_utility.cli:main',
-        'msgraph = connectors_utility.msgraph.cli:main'
-        ]},
+        'msgraph = connectors_utility.msgraph.cli:main',
+        'gsheet = connectors_utility.google.cli:main'
+    ]},
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',

@@ -1,6 +1,7 @@
 import os
 import click
 import pickle
+from shutil import copy
 
 
 class Context(object):
@@ -8,7 +9,8 @@ class Context(object):
     """
     def __init__(self):
         self.home = os.getcwd()
-        self._ensure_directory(os.path.expanduser('~/.data_connectors'))
+        self.config_dir = os.path.expanduser('~/.data_connectors')
+        self._ensure_directory(os.path.expanduser(self.config_dir))
         self.config = os.path.expanduser('~/.data_connectors/configs.ser')
         self.cache = {}
 
@@ -27,6 +29,11 @@ class Context(object):
         space.update(kwargs)
         self.cache[namespace] = space
         self._serialize()
+
+    def put_file(self, namespace, key, filepath):
+        assert os.path.exists(filepath)
+        dest = copy(filepath, self.config_dir)
+        self.put(namespace, **{key: dest})
 
     def get(self, namespace, key):
         space = self.cache.get(namespace) or {}
